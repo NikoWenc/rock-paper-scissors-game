@@ -1,8 +1,23 @@
 // Create a new function named getComputerChoice
-
+function getComputerChoice(){
 // Write the code so that getComputerChoice will randomly return one of the following string values: “rock”, “paper” or “scissors”
+       let computerChoice = Math.floor(Math.random() * 3) + 1;
 
+    switch (computerChoice){
+        case 1:
+            computerChoice= "Rock";
+            break;
+        case 2:
+            computerChoice = "Paper";
+            break;
+        case 3:
+            computerChoice = "Scissors";
+            break;
+    }
+    return computerChoice;
+}
 // Test that your function returns what you expect using console.log or the browser developer tools before advancing to the next step
+console.log(getComputerChoice());
 
 
 // Write the logic to get the human choice
