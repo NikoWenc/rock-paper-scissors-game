@@ -22,10 +22,25 @@ console.log(getComputerChoice());
 
 // Write the logic to get the human choice
 // Create a new function named getHumanChoice
-
+function getHumanChoice(){
 // Write the code so that getHumanChoice will return one of the valid choices depending on what the user inputs
+    let humanChoice = Number(prompt('Enter your choice \n "1" for Rock \n "2" for Paper \n "3" for Scissors'));
 
+    switch (humanChoice){
+        case 1:
+            humanChoice = "Rock";
+            break;
+        case 2:
+            humanChoice = "Paper";
+            break;
+        case 3:
+            humanChoice = "Scissors";
+            break;
+    }
+    return humanChoice;
+}
 // Test what your function returns by using console.log
+console.log(getHumanChoice());
 
 
 // Declare the players score variables
