@@ -23,7 +23,6 @@ function getComputerChoice(){
     return computerChoice;
 }
 // Test that your function returns what you expect using console.log or the browser developer tools before advancing to the next step
-console.log(getComputerChoice());
 
 
 // Write the logic to get the human choice
@@ -34,21 +33,39 @@ function getHumanChoice(){
     return humanChoice;
 }
 // Test what your function returns by using console.log
-console.log(getHumanChoice());
+
 
 // Write the logic to play a single round
 // Create a new function named playRound
-function playRound(humanChoice, computerChoice){
 // Define two parameters for playRound: humanChoice and computerChoice. Use these two parameters to take the human and computer choices as arguments
-
+function playRound(humanChoice, computerChoice){
 // Make your function’s humanChoice parameter case-insensitive so that players can input “rock”, “ROCK”, “RocK”, or other variations
-
-
-}
-
+    humanChoice = humanChoice.toLowerCase();
+    computerChoice = computerChoice.toLowerCase();
 // Write the code for your playRound function to console.log a string value representing the round winner, such as: “You lose! Paper beats Rock”
-
-// Increment the humanScore or computerScore variable based on the round winner.
+    if (humanChoice === "rock" && computerChoice === "paper"){
+        alert("your choice is: " + humanChoice + "\nvs" + "\ncomputer choice is: " + computerChoice);
+        alert("You Lose!");
+        computerScore++;
+    }else if (humanChoice === "paper" && computerChoice === "scissors"){
+        alert("your choice is: " + humanChoice + "\nvs" + "\ncomputer choice is: " + computerChoice);
+        alert("You Lose!");
+        computerScore++;
+    }else if (humanChoice === "scissors" && computerChoice === "rock"){
+        alert("your choice is: " + humanChoice + "\nvs" + "\ncomputer choice is: " + computerChoice);
+        alert("You Lose!");
+        computerScore++;
+    }else if (humanChoice === computerChoice) {
+        alert("your choice is: " + humanChoice + "\nvs" + "\ncomputer choice is: " + computerChoice);
+        alert("It's a Draw!");
+    }else {
+        alert("your choice is: " + humanChoice + "\nvs" + "\ncomputer choice is: " + computerChoice);
+        alert("You Win!");
+        humanScore++;
+    }
+// Increment the humanScore or computerScore variable based on the round winner. == DONE
+}
+playRound(getHumanChoice(), getComputerChoice());
 
 
 // Write the logic to play the entire game
