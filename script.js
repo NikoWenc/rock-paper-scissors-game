@@ -86,3 +86,5 @@ function playGame(){
         console.log("Play Score: " + computerScore);
     }
 }
+
+console.log(playGame());
