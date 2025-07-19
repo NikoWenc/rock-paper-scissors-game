@@ -46,30 +46,42 @@ function playRound(humanChoice, computerChoice){
     if (humanChoice === "rock" && computerChoice === "paper"){
         alert("your choice is: " + humanChoice + "\nvs" + "\ncomputer choice is: " + computerChoice);
         alert("You Lose!");
+        console.log("You Lose!");
         computerScore++;
     }else if (humanChoice === "paper" && computerChoice === "scissors"){
         alert("your choice is: " + humanChoice + "\nvs" + "\ncomputer choice is: " + computerChoice);
         alert("You Lose!");
+        console.log("You Lose!");
         computerScore++;
     }else if (humanChoice === "scissors" && computerChoice === "rock"){
         alert("your choice is: " + humanChoice + "\nvs" + "\ncomputer choice is: " + computerChoice);
         alert("You Lose!");
+        console.log("You Lose!");
         computerScore++;
     }else if (humanChoice === computerChoice) {
         alert("your choice is: " + humanChoice + "\nvs" + "\ncomputer choice is: " + computerChoice);
         alert("It's a Draw!");
+        console.log("It's a Draw");
     }else {
         alert("your choice is: " + humanChoice + "\nvs" + "\ncomputer choice is: " + computerChoice);
         alert("You Win!");
+        console.log("You Win!");
         humanScore++;
     }
 // Increment the humanScore or computerScore variable based on the round winner. == DONE
 }
-playRound(getHumanChoice(), getComputerChoice());
 
 
 // Write the logic to play the entire game
 // Create a new function named playGame
+function playGame(){
+
+for (let i = 0; i < 5; i++){
+    playRound(getHumanChoice(), getComputerChoice());
+    console.log("Play Score: " + humanScore);
+    console.log("Play Score: " + computerScore);
+}
+}
 
 // Move your playRound function and score variables so that they’re declared inside of the new playGame function
 
