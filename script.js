@@ -72,8 +72,6 @@ function playRound(humanChoice, computerChoice){
         console.log("You Win!");
         humanScore++;
     }
-    
-    
 }
 
 // play the game and loop for i amount of times
@@ -87,4 +85,5 @@ function playGame(){
     }
 }
 
+// for auto run game
 console.log(playGame());
