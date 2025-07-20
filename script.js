@@ -25,7 +25,7 @@ function getComputerChoice(){
 // function to get human/user input/choice
 function getHumanChoice(){
     let humanChoice = prompt('Enter your choice: \n Rock \n Paper \n Scissors');
-    while (humanChoice == null){
+    while (humanChoice == ''){
         humanChoice = prompt('Enter your choice: \n Rock \n Paper \n Scissors');
     }
     return humanChoice;
@@ -34,7 +34,6 @@ function getHumanChoice(){
 
 // function to compare the human choice and computer choice
 function playRound(humanChoice, computerChoice){
-
 // make the humanChoice & computerChoice value lowercase so it don't have to be case sensitive 
     humanChoice = humanChoice.toLowerCase();
     computerChoice = computerChoice.toLowerCase();
