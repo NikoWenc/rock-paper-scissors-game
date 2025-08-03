@@ -1,8 +1,6 @@
 // to track score and rounds
 let humanScore = 0;
 let computerScore = 0;
-// let rounds = 0;
-// let roundCounter = 1;
 let humanChoice;
 
 // function to randomly generate computer choice
@@ -32,17 +30,19 @@ const button3 = document.querySelector("#button3");
 function humanChoiceSelector(buttonChoice) {
     if (buttonChoice.id == "button1"){
         humanChoice = "Rock";
+        buttonChoice.blur();
         playGame();
     }
     else if (buttonChoice.id == "button2"){
         humanChoice = "Paper";
+        buttonChoice.blur();
         playGame();
     }
     else if (buttonChoice.id == "button3"){
         humanChoice = "Scissors";
+        buttonChoice.blur();
         playGame();
     }};
-
 button1.addEventListener('click', () => humanChoiceSelector(button1));
 button2.addEventListener('click', () => humanChoiceSelector(button2));
 button3.addEventListener('click', () => humanChoiceSelector(button3));
@@ -63,13 +63,11 @@ function playRound(humanChoice, computerChoice){
     if (humanChoice === "rock" && computerChoice === "paper") displayLose(humanChoice, computerChoice);
     else if (humanChoice === "paper" && computerChoice === "scissors") displayLose(humanChoice, computerChoice);
     else if (humanChoice === "scissors" && computerChoice === "rock") displayLose(humanChoice, computerChoice);
-
     else if (humanChoice === computerChoice) {
         alert("your choice is: " + humanChoice + "\nvs" + "\ncomputer choice is: " + computerChoice);
         alert("It's a Draw!");
         console.log("It's a Draw");
-    }
-    else {
+    }else {
         alert("your choice is: " + humanChoice + "\nvs" + "\ncomputer choice is: " + computerChoice);
         alert("You Win!");
         console.log("You Win!");
@@ -77,13 +75,18 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
+// get element to display game status
+const humanStatus = document.querySelector("#human-score");
+const computerStatus = document.querySelector("#computer-score");
+
+// update the textContent of score in the DOM
+humanStatus.textContent = "Player Score: " + humanScore;
+computerStatus.textContent = "Computer Score: " + computerScore;
+
 // play the game and loop for how many amount of times based on the user choice
 function playGame(){
-        // invoke playRound function and use getHumanChoice and getComputerChoice as parameters for the comparison
-        playRound(humanChoice, getComputerChoice());
-        alert("Player Score: " + humanScore + "\n" +
-            "Computer Score: " + computerScore
-        );
-        console.log("Player Score: " + humanScore + "\n" +
-            "Computer Score: " + computerScore
-        );};
+    // invoke playRound function and use getHumanChoice and getComputerChoice as parameters for the comparison
+    playRound(humanChoice, getComputerChoice());
+    humanStatus.textContent = "Player Score: " + humanScore;
+    computerStatus.textContent = "Computer Score: " + computerScore;
+};
