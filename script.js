@@ -3,6 +3,7 @@ let humanScore = 0;
 let computerScore = 0;
 let rounds = 0;
 let roundCounter = 1;
+let humanChoice;
 
 // function to randomly generate computer choice
 function getComputerChoice(){
@@ -23,14 +24,13 @@ function getComputerChoice(){
 }
 
 // function to get human/user input/choice
-function getHumanChoice(){
-    let humanChoice = prompt('Enter your choice: \n Rock \n Paper \n Scissors');
-    while (humanChoice == ''){
-        humanChoice = prompt('Enter your choice: \n Rock \n Paper \n Scissors');
-    }
-    return humanChoice;
-    
-}
+// function getHumanChoice(){
+//     let humanChoice = prompt('Enter your choice: \n Rock \n Paper \n Scissors');
+//     while (humanChoice == ''){
+//         humanChoice = prompt('Enter your choice: \n Rock \n Paper \n Scissors');
+//     }
+//     return humanChoice;
+// }
 
 // function to compare the human choice and computer choice
 function playRound(humanChoice, computerChoice){
@@ -63,7 +63,7 @@ function playRound(humanChoice, computerChoice){
     }
     else if (humanChoice !== "rock" && humanChoice !== "paper" && humanChoice !== "scissors"){
         alert("Invalid choice! \n Please input your choice again");
-        playRound(getHumanChoice(), getComputerChoice());
+        playRound(humanChoice, getComputerChoice());
     }
     else {
         alert("your choice is: " + humanChoice + "\nvs" + "\ncomputer choice is: " + computerChoice);
@@ -73,14 +73,34 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
+const button1 = document.querySelector("#button1");
+const button2 = document.querySelector("#button2");
+const button3 = document.querySelector("#button3");
+
+button1.addEventListener('click', () => {
+    humanChoice = "Rock";
+    playGame();
+});
+button2.addEventListener('click', () => {
+    humanChoice = "Paper";
+    playGame();
+});
+button3.addEventListener('click', () => {
+    humanChoice = "Scissors";
+    playGame();
+});
+
 // play the game and loop for how many amount of times based on the user choice
 function playGame(){
         // invoke playRound function and use getHumanChoice and getComputerChoice as parameters for the comparison
-        playRound(getHumanChoice(), getComputerChoice());
+        playRound(humanChoice, getComputerChoice());
         alert("Player Score: " + humanScore + "\n" +
+            "Computer Score: " + computerScore
+        );
+        console.log("Player Score: " + humanScore + "\n" +
             "Computer Score: " + computerScore
         );
 }
 
 // for auto run game
-console.log(playGame());
+
