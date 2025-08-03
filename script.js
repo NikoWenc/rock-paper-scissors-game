@@ -73,22 +73,30 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
+// get buttons and add functions to run playRound
 const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
 
-button1.addEventListener('click', () => {
-    humanChoice = "Rock";
-    playGame();
-});
-button2.addEventListener('click', () => {
-    humanChoice = "Paper";
-    playGame();
-});
-button3.addEventListener('click', () => {
-    humanChoice = "Scissors";
-    playGame();
-});
+function humanChoiceSelector(buttonChoice) {
+    if (buttonChoice.id == "button1"){
+        humanChoice = "Rock";
+        playGame();
+    }
+    else if (buttonChoice.id == "button2"){
+        humanChoice = "Paper";
+        playGame();
+    }
+    else if (buttonChoice.id == "button3"){
+        humanChoice = "Scissors";
+        playGame();
+    }
+}
+
+button1.addEventListener('click', () => humanChoiceSelector(button1));
+button2.addEventListener('click', () => humanChoiceSelector(button2));
+button3.addEventListener('click', () => humanChoiceSelector(button3));
+
 
 // play the game and loop for how many amount of times based on the user choice
 function playGame(){
@@ -101,6 +109,3 @@ function playGame(){
             "Computer Score: " + computerScore
         );
 }
-
-// for auto run game
-
