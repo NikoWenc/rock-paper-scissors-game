@@ -2,6 +2,8 @@
 let humanScore = 0;
 let computerScore = 0;
 let humanChoice;
+let rounds = document.querySelector("#rounds").addEventListener("input", (event) => rounds = event.target.value);
+let roundCounter = 1;
 
 // function to randomly generate computer choice
 function getComputerChoice(){
@@ -78,15 +80,30 @@ function playRound(humanChoice, computerChoice){
 // get element to display game status
 const humanStatus = document.querySelector("#human-score");
 const computerStatus = document.querySelector("#computer-score");
+const roundsCounter = document.querySelector("#rounds-counter");
 
 // update the textContent of score in the DOM
 humanStatus.textContent = "Player Score: " + humanScore;
 computerStatus.textContent = "Computer Score: " + computerScore;
+roundsCounter.textContent = "Round Number: " + roundCounter;
 
 // play the game and loop for how many amount of times based on the user choice
-function playGame(){
-    // invoke playRound function and use getHumanChoice and getComputerChoice as parameters for the comparison
+function playGame() {
     playRound(humanChoice, getComputerChoice());
     humanStatus.textContent = "Player Score: " + humanScore;
     computerStatus.textContent = "Computer Score: " + computerScore;
+    roundsCounter.textContent = "Round Number: " + ++roundCounter;
+    if (roundCounter > rounds){
+        (humanScore > computerScore)? gameWinner("Player"): gameWinner("Computer"); 
+    }
 };
+
+function gameWinner(winner) {
+    alert("Winner is " + winner + "!");
+    roundCounter = 0;
+    humanScore = 0;
+    computerScore = 0;
+    humanStatus.textContent = "Player Score: " + humanScore;
+    computerStatus.textContent = "Computer Score: " + computerScore;
+    roundsCounter.textContent = "Round Number: " + ++roundCounter;
+}
