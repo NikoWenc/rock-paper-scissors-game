@@ -75,14 +75,11 @@ function playRound(humanChoice, computerChoice){
 
 // play the game and loop for how many amount of times based on the user choice
 function playGame(){
-    rounds = Number(prompt("How many rounds do you want to play?"));
-    for (roundCounter; roundCounter <= rounds; roundCounter++){
         // invoke playRound function and use getHumanChoice and getComputerChoice as parameters for the comparison
         playRound(getHumanChoice(), getComputerChoice());
         alert("Player Score: " + humanScore + "\n" +
             "Computer Score: " + computerScore
         );
-    }
 }
 
 // for auto run game
