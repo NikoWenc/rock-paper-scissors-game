@@ -104,16 +104,21 @@ function playGame() {
 
 // reset all counters
 const resetAll = () => {
+
+    setTimeout(() => {
     roundCounter = 0;
     humanScore = 0;
     computerScore = 0;
     humanStatus.textContent = "Player Score: " + humanScore;
     computerStatus.textContent = "Computer Score: " + computerScore;
     roundsCounter.textContent = "Round Number: " + ++roundCounter;
+    }, 1000);
+
 }
 
 // call when game ends for winner
 function gameWinner(winner) {
-    alert(winner + " Wins!");
-    resetAll();
+    setTimeout(() =>
+        {alert(winner + " Wins!");
+    resetAll();}, 1000);
 }
