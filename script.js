@@ -2,8 +2,10 @@
 let humanScore = 0;
 let computerScore = 0;
 let humanChoice;
-let rounds = document.querySelector("#rounds").addEventListener("input", (event) => rounds = event.target.value);
+let rounds = document.querySelector("#rounds");
 let roundCounter = 1;
+
+rounds.addEventListener("input", (event) => console.log(event.target.value));
 
 // function to randomly generate computer choice
 function getComputerChoice(){
@@ -30,21 +32,20 @@ const button3 = document.querySelector("#button3");
 
 // function to get human/user input/choice
 function humanChoiceSelector(buttonChoice) {
+    if (rounds.value === '') return resetAll();
+
+function playGameAfterChoice(choice) {humanChoice = choice; buttonChoice.blur(); playGame();}
+
     if (buttonChoice.id == "button1"){
-        humanChoice = "Rock";
-        buttonChoice.blur();
-        playGame();
+        playGameAfterChoice("Rock");
     }
     else if (buttonChoice.id == "button2"){
-        humanChoice = "Paper";
-        buttonChoice.blur();
-        playGame();
+        playGameAfterChoice("Paper");
     }
     else if (buttonChoice.id == "button3"){
-        humanChoice = "Scissors";
-        buttonChoice.blur();
-        playGame();
+        playGameAfterChoice("Scissors");
     }};
+
 button1.addEventListener('click', () => humanChoiceSelector(button1));
 button2.addEventListener('click', () => humanChoiceSelector(button2));
 button3.addEventListener('click', () => humanChoiceSelector(button3));
@@ -93,17 +94,24 @@ function playGame() {
     humanStatus.textContent = "Player Score: " + humanScore;
     computerStatus.textContent = "Computer Score: " + computerScore;
     roundsCounter.textContent = "Round Number: " + ++roundCounter;
-    if (roundCounter > rounds){
+    if (roundCounter > rounds.value){
         (humanScore > computerScore)? gameWinner("Player"): gameWinner("Computer"); 
+        resetAll();
     }
 };
 
-function gameWinner(winner) {
-    alert("Winner is " + winner + "!");
+// reset all counters
+const resetAll = () => {
     roundCounter = 0;
     humanScore = 0;
     computerScore = 0;
     humanStatus.textContent = "Player Score: " + humanScore;
     computerStatus.textContent = "Computer Score: " + computerScore;
     roundsCounter.textContent = "Round Number: " + ++roundCounter;
+}
+
+// call when game ends for winner
+function gameWinner(winner) {
+    alert(winner + " Wins!");
+    resetAll();
 }
