@@ -95,7 +95,9 @@ function playGame() {
     computerStatus.textContent = "Computer Score: " + computerScore;
     roundsCounter.textContent = "Round Number: " + ++roundCounter;
     if (roundCounter > rounds.value){
-        (humanScore > computerScore)? gameWinner("Player"): gameWinner("Computer"); 
+        if (humanScore > computerScore) {gameWinner("Player");}
+        else if (humanScore < computerScore){gameWinner("Computer");}
+        else if (humanScore == computerScore) {alert("Its a DRAW!")}; 
         resetAll();
     }
 };
